@@ -419,9 +419,16 @@
   </select>
 
   <!-- Redirect to thank you page after submission -->
-  <input type="hidden" name="_next" value="https://www.youtube.com/">
+  <input type="hidden" name="_next" value="thankyou.html">
   <button type="submit">Checkout</button>
 </form>
+
+      <script>
+  function goToThankYou() {
+    // You can show a loader here if needed
+    return true; // allow form submission
+  }
+</script>
 
     </div>
   </div>
