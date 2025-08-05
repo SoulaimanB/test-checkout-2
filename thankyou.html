@@ -1,11 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1 style="text-align: center;">THANK YOU PAGE</h1>
-</body>
-</html>
+<p class="lead mt-3" id="confirmation-message">Loading your order...</p>
+
+<div class="mt-4 p-4 rounded" style="background-color: #1e213f; border-left: 4px solid #4ad295;">
+  <h5>Order Details</h5>
+  <table class="table table-dark table-bordered mt-3">
+    <tbody>
+      <tr><th>Full Name</th><td id="name-field"></td></tr>
+      <tr><th>Email</th><td id="email-field"></td></tr>
+      <tr><th>Phone</th><td id="phone-field"></td></tr>
+      <tr><th>Device</th><td id="device-field"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  const name = localStorage.getItem("iptv_name");
+  const email = localStorage.getItem("iptv_email");
+  const phone = localStorage.getItem("iptv_phone");
+  const device = localStorage.getItem("iptv_device");
+
+  if (name && email && phone && device) {
+    document.getElementById("confirmation-message").innerText = `Thank you, ${name}! We will contact you shortly at ${email}.`;
+
+    document.getElementById("name-field").innerText = name;
+    document.getElementById("email-field").innerText = email;
+    document.getElementById("phone-field").innerText = phone;
+    document.getElementById("device-field").innerText = device;
+
+    // Optional: clear localStorage
+    localStorage.removeItem("iptv_name");
+    localStorage.removeItem("iptv_email");
+    localStorage.removeItem("iptv_phone");
+    localStorage.removeItem("iptv_device");
+  } else {
+    document.getElementById("confirmation-message").innerText = "Thank you! Your submission was successful.";
+  }
+</script>
