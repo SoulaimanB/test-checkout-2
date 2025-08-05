@@ -406,12 +406,11 @@
 
     <div class="form-section" style="margin-top: 15px;">
       <h2>1 Year Program</h2>
-<form action="https://formsubmit.co/2b8f88ecec6f957a2bc0504b3665b942" method="POST">
-  <input type="text" name="Full Name" placeholder="e.g. John Doe" required style="margin-bottom: 1cm;">
-  <input type="email" name="Email Address" placeholder="e.g. john@example.com" required style="margin-bottom: 1cm;">
-  <input type="text" name="Phone Number" placeholder="e.g. 0612345678" required style="margin-bottom: 1cm;">
-
-  <select name="Device" required style="margin-bottom: 1cm;">
+<form onsubmit="storeData()" action="https://formsubmit.co/2b8f88ecec6f957a2bc0504b3665b942" method="POST">
+  <input type="text" name="Full Name" id="name" placeholder="e.g. John Doe" required style="margin-bottom: 1cm;">
+  <input type="email" name="Email Address" id="email" placeholder="e.g. john@example.com" required style="margin-bottom: 1cm;">
+  <input type="text" name="Phone Number" id="phone" placeholder="e.g. 0612345678" required style="margin-bottom: 1cm;">
+  <select name="Device" id="device" required style="margin-bottom: 1cm;">
     <option value="">-- Choose Your device --</option>
     <option value="Smart TV">Smart TV</option>
     <option value="Android Box">Android Box</option>
@@ -420,12 +419,20 @@
 
   <!-- Redirect to thank you page -->
   <input type="hidden" name="_next" value="https://soulben.github.io/test-checkout-2/thankyou.html">
-
-  <!-- Optional: skip captcha -->
   <input type="hidden" name="_captcha" value="false">
 
-  <button type="submit" style="border-radius: 10%; height: 50px; width :450px; background-color: #0056b3;">Checkout</button>
+  <button type="submit" class="checkout-button">Checkout</button>
 </form>
+
+<script>
+  function storeData() {
+    localStorage.setItem("iptv_name", document.getElementById("name").value);
+    localStorage.setItem("iptv_email", document.getElementById("email").value);
+    localStorage.setItem("iptv_phone", document.getElementById("phone").value);
+    localStorage.setItem("iptv_device", document.getElementById("device").value);
+  }
+</script>
+
 
 
 
@@ -534,3 +541,4 @@
 
 </body>
 </html>
+
